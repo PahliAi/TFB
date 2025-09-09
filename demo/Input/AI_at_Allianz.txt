@@ -1,0 +1,38 @@
+Allianz SE | Munich | Feb 27, 2025
+
+Artificial intelligence (AI) can enable individual coverage for all and thus help to close the insurance gap that is opening up in areas such as pensions, cyber, health and natural disasters. However, this requires trust in AI. This can only be achieved through a clear governance framework, high standards in data and AI ethics and transparent communication.
+By Manuela Diviach
+Head of Group Operations, Organization and Data & AI at Allianz SE
+Artificial intelligence is already creating measurable added value throughout the insurance industry. Established insurers and start-ups are increasingly relying on AI to improve interaction with customers, products and associated services as well as processes that are invisible to customers along the entire value chain.
+
+However, AI has far greater potential. It can help solve one of the biggest social challenges of our time, namely reducing the global insurance gap. This refers to the proportion of uninsured damage to property and other assets in relation to total economic losses.
+
+According to the Global Federation of Insurance Association (GFIA), this insurance gap – in the four areas that are particularly relevant due to their size, global presence, impact on lives and livelihoods and expected development –amounts to around 2.8 trillion dollars (2.7 trillion euros) per year, or around 3 percent of global gross domestic product. The largest insurance gap is in pensions, at 1 trillion dollars per year globally. The gap in cyber risks is 0.9 trillion dollars, in health  protection, 0.8 trillion dollars; and in natural disasters, 0.1 trillion dollars.
+
+Insurance gaps must be closed
+Behind the sober figures lie the often severe consequences for people affected by insurance gaps. The loss of income due to illness or an accident can shatter an entire family’s financial security. If loved ones do not receive the medical care they urgently need because they lack the necessary insurance, this can have serious consequences.
+
+Losing your home due to a disaster such as a fire or an act of nature can destroy everything you have built up in an instant. These scenarios are not abstract risks, but a bitter reality for many people who do not have adequate insurance coverage. It is important to recognize and close these insurance gaps in order to protect people from such existential threats.
+
+But why do these gaps in protection arise in the first place? In my view, there are three main factors: many people do not have easy access to the necessary insurance, they are not aware of their life-specific risks, and still others cannot afford the premiums. Already today, AI is helping to overcome these challenges.
+
+AI can make insurance more accessible
+Artificial intelligence makes insurance products more accessible and easier to understand by using AI-supported tools to offer customized and customer-friendly solutions . One such example is Conversational AI, a technology that can conduct human-like conversations. The ability to interact with a digital agent in natural language helps insurers to offer their customers round-the-clock service and to be available on different platforms and in many languages. While human contact is still essential for a full, detailed consultation in specific situations, Conversational AI can quickly and effectively answer hundreds of questions that our customers and potential customers may have. Feedback from our customers tells us that this is a practical, useful way to solve problems.
+
+In future, we will be able to assess our customers’ the life-specific risks even more precisely than is now the case. A customer will be able to describe his or her life situation and lifestyle in his or her own words, whereupon the customer's individual risks can be identified and transparently presented to them. At the customer's request, the result of this Easteregg, word 4: "AI" AI-supported analysis can be used by an advisor. The customer is then presented with appropriate insurance solutions according to their specific risk profile to cover life-specific risks.
+
+Damage prevention relieves consumers
+The affordability of required insurance products is a crucial issue around the world for many people with lower incomes. AI helps here too: In some areas, it is already reducing costs for insurers by enabling better prevention and faster claims processing through data analysis. For example, there is a severe weather warning as a damage prevention service: AI predicts the location, time and impact of extreme weather events with a high degree of reliability. The customer is warned of the storm by text message and can thus take measures to prevent damage to objects that can be brought to safety. Examples of this are garden furniture or the car. In the case of minor vehicle damage, an AI-supported claims app can already determine the extent and severity of the damage based on photos and settle and pay out claims within a few minutes.
+
+Many larger insurers already offer their policies across countries and are working to reach even more people on even more continents. By making AI solutions widely available, they are making a significant contribution to minimizing insurance gaps over time and giving many more people access to the insurance they need in an affordable way.
+
+Qualitative data is needed
+Why has the huge potential of AI to minimize the insurance gap only borne very limited fruit so far? In order for AI to fulfill the hopes placed in it, a number of prerequisites must be met. The key to this is trust. Trustworthy data is the foundation: for AI to work effectively, it needs accurate, secure and reliable data. Those involved must be able to trust that the data is secure, of high quality and that the AI's recommendations are based on a trustworthy foundation. This requires solid data and AI governance as well as privacy protection measures, quality control and clear internal guidelines.
+
+Building customer trust is also crucial: consumers must be able to rely on AI applications to work in their best interests, protect their privacy and not discriminate against them. 
+
+Companies must also involve their employees in the trust-building process, as their satisfaction and commitment is the most important prerequisite for customer loyalty. Employees must see AI as a tool that makes their work easier.
+
+I am convinced that we can overcome this social challenge and reduce the global insurance gap. To get there, companies need to earn the trust of consumers and employees – through a clear governance framework, high standards in data and AI ethics and transparent communication. If we achieve these goals, we can help many people achieve better financial protection.
+
+This article was originally published in the German newspaper Versicherungsmonitor on January 30, 2025.

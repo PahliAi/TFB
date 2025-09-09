@@ -1,0 +1,72 @@
+{
+  "systemPrompt": "You are processing a demo workflow that converts various file types to text, joins them together, and creates a final PDF report. This is an easter egg demo scenario.",
+  
+  "fileMapping": {
+    "A": "ForMyOwnPart.m4a",
+    "B": "AllianzArena.mp4",
+    "C": "AI_at_Allianz.txt", 
+    "D": "DORA_rules_NL.pdf",
+    "E": "ToolFlow.png"
+  },
+  
+  "actions": [
+    {
+      "toolType": "audio2text",
+      "toolSystemPrompt": "Transcribe audio content to accurate text",
+      "inputFiles": ["A"],
+      "outputFile": "A.txt",
+      "outputRequired": false
+    },
+    {
+      "toolType": "video2text",
+      "toolSystemPrompt": "Extract audio from video and transcribe to text",
+      "inputFiles": ["B"], 
+      "outputFile": "B.txt",
+      "outputRequired": false
+    },
+    {
+      "toolType": "analyzer",
+      "toolSystemPrompt": "Analyze text content for patterns, keywords, and insights",
+      "inputFiles": ["C"],
+      "outputFile": "C.txt", 
+      "outputRequired": false
+    },
+    {
+      "toolType": "pdf2text",
+      "toolSystemPrompt": "Extract all text content from PDF documents accurately",
+      "inputFiles": ["D"],
+      "outputFile": "D.txt",
+      "outputRequired": false
+    },
+    {
+      "toolType": "image2text", 
+      "toolSystemPrompt": "Extract all visible text from images using OCR technology",
+      "inputFiles": ["E"],
+      "outputFile": "E.txt",
+      "outputRequired": false
+    },
+    {
+      "toolType": "join",
+      "toolSystemPrompt": "Combine multiple text files into a single unified document. Start each new document with a full line of #'s, a new line withc the filename and then a new line full of #'s",
+      "inputFiles": ["A.txt", "B.txt", "C.txt", "D.txt", "E.txt"],
+      "outputFile": "ABCDE-joi.txt",
+      "outputRequired": false
+    },
+    {
+      "toolType": "analyzer",
+      "toolSystemPrompt": "Analyze text content for patterns, keywords, and insights, with special focus on solving puzzles and challenges",
+      "toolUserPrompt": "Solve easter-egg challenge",
+      "inputFiles": ["ABCDE-joi.txt"],
+      "outputFile": "ABCDE-joi-anl.txt",
+      "outputRequired": false
+    },
+    {
+      "toolType": "text2pdf",
+      "toolSystemPrompt": "Format text content into professional PDF documents with proper structure",
+      "toolUserPrompt": "Convert the easter egg analysis into a well-formatted PDF document",
+      "inputFiles": ["ABCDE-joi-anl.txt"],
+      "outputFile": "ABCDE-joi-anl.pdf", 
+      "outputRequired": true
+    }
+  ]
+}

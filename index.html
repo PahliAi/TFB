@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+CSS ARCHITECTURE NOTE FOR CLAUDE:
+- This project uses CUSTOM CSS classes defined in src/styles.css
+- Available utility classes: .flex, .items-center, .justify-center, .justify-between, .container, etc.
+- NO Tailwind CSS - don't use classes like bg-blue-500, text-gray-900, rounded-lg, shadow-xl
+- For styling: use available classes from styles.css + inline styles for missing properties
+- Always check styles.css for available classes before assuming Tailwind utilities exist
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolFlowBuilder - Visual AI Workflow Designer</title>
+    <meta name="description" content="Transform 40-hour tasks into 30-minute workflows with visual AI automation">
+    <link rel="stylesheet" href="src/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="logo">ToolFlowBuilder</h1>
+            <div class="mode-toggle">
+                <button id="visualModeBtn" class="mode-btn active">Visual</button>
+                <button id="textualModeBtn" class="mode-btn">Textual</button>
+                <button id="debugCacheBtn" class="debug-cache-btn" title="Debug Cache Inspector">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tool Carousel -->
+    <div class="tool-carousel-container">
+        <button id="scrollLeftBtn" class="scroll-btn">←</button>
+        <div id="toolCarousel" class="tool-carousel">
+            <!-- Tool items will be populated here -->
+        </div>
+        <button id="scrollRightBtn" class="scroll-btn">→</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        
+        <!-- Left Side Container -->
+        <div class="left-side-container">
+            <!-- Drop area shared by both left panels -->
+            <div id="dropZone" class="drop-zone">
+                <div>
+                    <div class="drop-icon">📁</div>
+                    <div class="drop-text">Drop Files Here</div>
+                </div>
+                <input type="file" id="fileInput" multiple class="hidden" accept="audio/*,video/*,application/pdf,text/*,image/*,.docx,.xlsx,.m4a">
+            </div>
+            
+            <!-- Two side-by-side panels -->
+            <div class="side-by-side-panels">
+                <!-- Input Files Panel -->
+                <div class="left-sub-panel">
+                    <div class="file-list-header">
+                        <div class="section-title">Input Files</div>
+                        <div class="header-buttons">
+                            <button id="inputFilesHelpBtn" class="help-icon" title="Click for help">❓</button>
+                            <button id="clearFilesBtn" class="clear-btn">Clear</button>
+                        </div>
+                    </div>
+                    <div id="FileList">
+                        <!-- Original uploaded files with metadata -->
+                    </div>
+                </div>
+                
+                <!-- Sub-panel resize handle -->
+                <div class="resize-handle sub-resize-handle"></div>
+                
+                <!-- Text Files Panel -->
+                <div class="right-sub-panel">
+                    <div class="file-list-header">
+                        <div class="section-title">Text Files</div>
+                    </div>
+                    <div id="textFilesLabelList" class="text-labels-list">
+                        <!-- Auto-generated .txt labels for dragging -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resize Handle -->
+        <div class="resize-handle"></div>
+
+        <!-- Center Panel (Canvas) -->
+        <div class="center-panel">
+            <!-- Voice/Text Input Area -->
+            <div class="input-area">
+                <textarea id="textInput" class="text-input" placeholder="Describe your workflow in natural language..."></textarea>
+                <div class="button-row">
+                    <button id="generateFlowBtn" class="btn btn-primary" disabled>
+                        <span>↓</span>
+                        <span>Generate Flow</span>
+                    </button>
+                    <button id="voiceInputBtn" class="btn btn-secondary">🎤</button>
+                    <button id="describeFlowBtn" class="btn btn-secondary" disabled>
+                        <span>↑</span>
+                        <span>Describe Flow</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Canvas Container - Dual Mode (Visual/Textual) -->
+            <div class="canvas-container">
+                
+                <!-- Visual Mode Canvas (Current/Default) -->
+                <div id="visualCanvas" class="canvas-mode active">
+                    <div class="canvas-toolbar">
+                        <div class="canvas-notifications">
+                            <div id="canvasNotification" class="canvas-notification hidden">
+                                <span class="notification-icon"></span>
+                                <span class="notification-text"></span>
+                            </div>
+                        </div>
+                        <div class="toolbar-buttons">
+                            <button id="clearCanvasBtn" class="toolbar-btn danger">Clear</button>
+                            <button id="toggleConnectionsBtn" class="toolbar-btn secondary">Hide Connections</button>
+                            <button id="exportWorkflowBtn" class="toolbar-btn primary">Export JSON</button>
+                            <button id="executeWorkflowBtn" class="toolbar-btn execute" disabled>
+                                <span>🚀</span>
+                                <span>EXECUTE!</span>
+                                <span>⚡</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="canvas" class="canvas">
+                        <svg id="connectionSvg" class="connection-svg">
+                            <!-- Connection lines will be drawn here -->
+                        </svg>
+                        
+                        <div id="canvasWelcome" class="canvas-welcome">
+                            <div class="welcome-content">
+                                <div class="welcome-icon">⚡</div>
+                                <h3>Workflow Canvas</h3>
+                                <p>Upload files. Drop a tool from the top carousel on this canvas to create a tool node. Drop Text Files from the left panel in the tool node. Enter a prompt if needed. Drag any file to Output Files panel on the right if you want the document to be actually downloadable after flow execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Textual Mode Canvas (New) -->
+                <div id="textualCanvas" class="canvas-mode hidden">
+                    <div class="canvas-toolbar">
+                        <div class="canvas-notifications">
+                            <div id="textualNotification" class="canvas-notification hidden">
+                                <span class="notification-icon"></span>
+                                <span class="notification-text"></span>
+                            </div>
+                        </div>
+                        <div class="toolbar-buttons">
+                            <!-- Read-only mode - no action buttons needed -->
+                        </div>
+                    </div>
+                    
+                    <div id="textualSteps" class="textual-steps">
+                        <!-- Textual workflow steps will be populated here by TextualFlowManager -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Resize Handle -->
+        <div class="resize-handle"></div>
+        
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div id="downloadResultsHeader" class="download-header">
+                <div>
+                    <div class="drop-icon">📥</div>
+                    <div class="drop-text">Download Results</div>
+                </div>
+            </div>
+            <div class="panel-section">
+                <div class="file-list-header">
+                    <div class="section-title">Output Files</div>
+                    <div class="header-buttons">
+                        <button id="outputFilesHelpBtn" class="help-icon" title="Click for help">❓</button>
+                    </div>
+                </div>
+                
+                <!-- Status Bar -->
+                <div id="statusBar" class="status-bar">
+                    <div class="spinner"></div>
+                    <span id="statusText">Processing...</span>
+                </div>
+                
+                <div id="outputList">
+                    <div class="output-placeholder">
+                        <div class="placeholder-icon">📋</div>
+                        <p class="placeholder-text">Output files will appear here</p>
+                        <p class="placeholder-subtext">Click to rename</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+
+    <!-- Voice Input Modal -->
+    <div id="voiceModal" class="voice-modal hidden">
+        <div class="voice-modal-content">
+            <h3>🎤 Voice Input</h3>
+            <div class="voice-content">
+                <div id="voiceAnimation" class="voice-animation"></div>
+                <p id="voiceStatus" class="voice-status">Click start to begin speaking...</p>
+                <p id="voiceTranscript" class="voice-transcript"></p>
+            </div>
+            <div class="voice-buttons">
+                <button id="startVoiceBtn" class="voice-btn success">Start</button>
+                <button id="stopVoiceBtn" class="voice-btn danger" disabled>Stop</button>
+                <button id="closeVoiceBtn" class="voice-btn secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script>console.log('Script tag reached');</script>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>

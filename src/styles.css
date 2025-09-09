@@ -1,0 +1,1465 @@
+/* ToolFlowBuilder - Custom CSS Styles */
+
+/* CSS Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f3f4f6;
+    line-height: 1.5;
+    color: #374151;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Prevent window scrollbars */
+}
+
+/* Colors */
+:root {
+    --color-primary: #1E40AF;
+    --color-secondary: #F59E0B;
+    --color-audio: #3B82F6;
+    --color-video: #8B5CF6;
+    --color-pdf: #EF4444;
+    --color-text: #10B981;
+    --color-success: #10b981;
+    --color-danger: #ef4444;
+}
+
+/* Layout & Grid */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Override container max-width for main content */
+.main-container.resizable-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.space-x-2 > * + * {
+    margin-left: 0.5rem;
+}
+
+.space-x-4 > * + * {
+    margin-left: 1rem;
+}
+
+.space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+/* Header */
+header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 1rem 0;
+}
+
+.header-content {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.mode-toggle {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.debug-cache-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+}
+
+.debug-cache-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.tagline {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Tool Carousel */
+.tool-carousel-container {
+    height: 5rem;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.scroll-btn {
+    color: #6b7280;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.scroll-btn:hover {
+    color: #4f46e5;
+}
+
+.tool-carousel {
+    display: flex;
+    overflow-x: auto;
+    flex: 1;
+    margin: 0 1rem;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* V4 Tool Category Styling - Clean Separators and Labels */
+.category-separator {
+    width: 1px;
+    height: 4rem;
+    background-color: #e5e7eb;
+    opacity: 0.6;
+    margin: 0 0.25rem;
+}
+
+.category-label {
+    font-size: 0.65rem;
+    color: #9ca3af;
+    text-align: center;
+    line-height: 1.2;
+    white-space: pre-line;
+    margin: 0 2px;
+    align-self: center;
+}
+
+.tool-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    min-width: 6rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.tool-card:hover {
+    background: #eef2ff;
+    transform: translateY(-1px);
+}
+
+.tool-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.tool-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* Main Layout - Simple 3 Panel System */
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 160px);
+    min-height: 500px;
+    width: 100vw;
+}
+
+/* Left Side Container */
+.left-side-container {
+    width: 350px; /* 175px * 2 for both sub-panels */
+    min-width: 200px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Side by side panels within left container */
+.side-by-side-panels {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: 0; /* Critical: allows flex children to shrink for scrolling */
+}
+
+.left-sub-panel, .right-sub-panel {
+    width: 175px;
+    min-width: 100px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Let child containers handle scrolling */
+    min-height: 0; /* Critical: allows flex children to shrink for scrolling */
+}
+
+/* Center Panel */
+.center-panel {
+    flex: 1; /* Takes remaining space after left (350px) and right (175px) */
+    min-width: 300px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Right Panel */
+.right-panel {
+    width: 175px;
+    min-width: 100px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Critical: allows flex children to shrink for scrolling */
+}
+
+/* Panel Sections */
+.panel-section {
+    padding: 1rem;
+    flex: 1;
+    overflow: hidden; /* Let child containers handle scrolling */
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Critical: allows flex children to shrink for scrolling */
+}
+
+/* Drop Zone */
+.drop-zone {
+    height: 5rem;
+    background: var(--color-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.drop-zone:hover {
+    background: #059669;
+}
+
+.drop-zone.drag-over {
+    background: var(--color-primary);
+    border: 2px dashed #dbeafe;
+}
+
+.drop-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.drop-text {
+    font-size: 0.875rem;
+}
+
+/* Resize Handles */
+.resize-handle {
+    width: 4px;
+    background-color: #e5e7eb;
+    cursor: ew-resize;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.resize-handle:hover {
+    background-color: #3b82f6;
+}
+
+.resize-handle.resizing {
+    background-color: #3b82f6;
+}
+
+/* V4 Input Files Labels (File List Box) */
+.inputfiles-labels-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.input-file-label-card {
+    background: white;
+    border: 1px solid #f97316;
+    border-left: 4px solid #f97316;
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.625rem;
+    min-width: 3rem;
+    margin-bottom: 0.25rem;
+}
+
+.input-file-label-card:hover {
+    background: #fff7ed;
+    box-shadow: 0 2px 4px rgba(249, 115, 22, 0.1);
+}
+
+.input-file-label-card.selected {
+    background: #fed7aa;
+    border-color: #ea580c;
+}
+
+.label-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.label-id {
+    font-weight: bold;
+    color: #ea580c;
+    font-size: 0.625rem;
+    flex-shrink: 0;
+}
+
+.file-icon {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+.original-filename {
+    font-size: 0.625rem;
+    color: #6b7280;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+/* V4 Text Files Labels (textfiles Box) */
+.textfiles-labels-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.text-file-label-card {
+    background: white;
+    border: 1px solid #eab308;
+    border-left: 4px solid #eab308;
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.375rem !important;
+    cursor: grab;
+    transition: all 0.2s;
+    font-size: 0.625rem !important;
+    min-width: 3rem;
+    margin-bottom: 0.25rem;
+}
+
+.text-file-label-card:hover {
+    background: #fefce8;
+    box-shadow: 0 2px 4px rgba(234, 179, 8, 0.1);
+}
+
+.text-file-label-card:active {
+    cursor: grabbing;
+}
+
+.text-file-label-card.selected {
+    background: #fde68a;
+    border-color: #d97706;
+}
+
+.label-text {
+    font-weight: 500;
+    color: #d97706;
+    text-align: center;
+}
+
+.source-indicator {
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
+    text-align: center;
+}
+
+/* Filtered state for FileList box */
+.file-card.filtered-active {
+    background: #e0f2fe !important;
+    border: 1px solid #0ea5e9 !important;
+    box-shadow: 0 0 8px rgba(14, 165, 233, 0.2);
+}
+
+/* File details styling */
+.file-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.file-size {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* Help Icon */
+.help-icon {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.help-icon:hover {
+    opacity: 1;
+}
+
+/* Header buttons container */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.file-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0; /* Don't shrink - keep header always visible */
+}
+
+.section-title {
+    color: #374151;
+    font-weight: 600;
+}
+
+.clear-btn {
+    font-size: 0.75rem;
+    color: var(--color-danger);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    color: #b91c1c;
+}
+
+
+.remove-file {
+    color: #ef4444;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    padding: 0.25rem;
+}
+
+.remove-file:hover {
+    color: #b91c1c;
+}
+
+/* Old center-panel CSS removed - now using resizable system */
+
+.input-area {
+    height: 10rem;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-input {
+    flex: 1;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    resize: none;
+    font-family: inherit;
+    margin-bottom: 0.75rem;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.text-input.drag-over {
+    border: 2px dashed var(--color-primary);
+    background: #dbeafe;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #4338ca;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #4b5563;
+}
+
+/* Canvas Area */
+.canvas-container {
+    flex: 1;
+    background: #f9fafb;
+    position: relative;
+    overflow: hidden;
+}
+
+.canvas-toolbar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+    width: calc(100% - 2rem);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.canvas-notifications {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.canvas-notification {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.canvas-notification.hidden {
+    display: none;
+}
+
+.canvas-notification.error {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.canvas-notification.warning {
+    background-color: #fffbeb;
+    color: #d97706;
+    border: 1px solid #fed7aa;
+}
+
+.canvas-notification.info {
+    background-color: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+}
+
+.canvas-notification.success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.toolbar-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.toolbar-btn {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    border: none;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toolbar-btn.danger {
+    color: var(--color-danger);
+}
+
+.toolbar-btn.primary {
+    color: var(--color-primary);
+}
+
+.toolbar-btn.execute {
+    background: linear-gradient(to right, #10b981, #059669);
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+    transition: all 0.2s;
+}
+
+.toolbar-btn.execute:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-btn.execute:disabled {
+    background: #9ca3af;
+    transform: none;
+    box-shadow: none;
+}
+
+.toolbar-btn.execute.ready {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.toolbar-btn:hover {
+    background: #f3f4f6;
+}
+
+.canvas {
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    padding: 2rem;
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.canvas-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.welcome-content h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* V4 Workflow Nodes with Color System */
+.node {
+    position: absolute;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    min-width: 8rem;
+    max-width: 12rem;
+    cursor: move;
+    transition: all 0.2s;
+    font-size: 0.75rem;
+}
+
+/* V4 Node Color States */
+.node.node-red {
+    border-color: #ef4444;
+    border-width: 2px;
+    background-color: #fef2f2;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.node.node-yellow {
+    border-color: #eab308;
+    border-width: 2px;
+    box-shadow: 0 2px 8px rgba(234, 179, 8, 0.2);
+}
+
+.node.node-green {
+    border-color: #10b981;
+    border-width: 2px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.node.node-blue {
+    border-color: #3b82f6;
+    border-width: 2px;
+    background-color: #eff6ff;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+/* Node Status Indicator - REMOVED: No longer used after delegating to NodeManager */
+
+/* Output File Cards */
+.output-file-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s;
+}
+
+.output-file-card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.output-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.output-name {
+    flex: 1;
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.promotion-badge {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.output-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.source-info {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.output-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.download-btn, .rename-btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.download-btn:hover, .rename-btn:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.node:hover {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+.node.audio2text { border-left: 4px solid var(--color-audio); }
+.node.video2audio { border-left: 4px solid var(--color-video); }
+.node.pdf2text { border-left: 4px solid var(--color-pdf); }
+.node.image2text { border-left: 4px solid #eab308; }
+.node.summarizer { border-left: 4px solid var(--color-text); }
+.node.translator { border-left: 4px solid #4f46e5; }
+.node.analyzer { border-left: 4px solid #f59e0b; }
+.node.text2pdf { border-left: 4px solid #ec4899; }
+.node.text2template { border-left: 4px solid #14b8a6; }
+
+/* Connection lines */
+.connection-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.connection-line {
+    stroke: #6b7280;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Old right-panel CSS removed - now using resizable system */
+
+.download-header {
+    height: 5rem;
+    background: var(--color-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.download-header:hover:not(.disabled) {
+    background: #059669;
+}
+
+.download-header.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Legacy .output-container styles now handled by .panel-content */
+
+.status-bar {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #dbeafe;
+    border: 1px solid #93c5fd;
+    border-radius: 0.5rem;
+    display: none;
+}
+
+.status-bar.show {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #d1d5db;
+    border-top: 2px solid #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.output-placeholder {
+    text-align: center;
+    padding: 2rem 0;
+    color: #9ca3af;
+}
+
+.placeholder-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.placeholder-text {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.placeholder-subtext {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* List containers - Ensure proper scrolling */
+#FileList, #textFilesLabelList, #outputList {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0; /* Important: allows flex item to shrink below content size */
+}
+
+/* Specific styling for each list */
+#FileList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+#textFilesLabelList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+/* Output List - Full height drop area */
+#outputList {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+/* When outputList is empty, center the placeholder */
+#outputList.empty {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Voice Modal */
+.voice-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.voice-modal-content {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    max-width: 28rem;
+    width: 100%;
+    margin: 0 1rem;
+}
+
+.voice-modal h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.voice-content {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.voice-animation {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--color-danger);
+    opacity: 0.75;
+    animation: pulse 2s infinite;
+}
+
+.voice-status {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.voice-transcript {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    min-height: 4rem;
+    text-align: left;
+}
+
+.voice-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.voice-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.voice-btn.success {
+    background: var(--color-success);
+}
+
+.voice-btn.success:hover {
+    background: #059669;
+}
+
+.voice-btn.danger {
+    background: var(--color-danger);
+}
+
+.voice-btn.danger:hover {
+    background: #dc2626;
+}
+
+.voice-btn.secondary {
+    background: #6b7280;
+}
+
+.voice-btn.secondary:hover {
+    background: #4b5563;
+}
+
+/* Hidden elements */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        min-height: calc(100vh - 160px);
+    }
+    
+    .resizable-container {
+        flex-direction: column;
+    }
+    
+    .panel {
+        width: 100% !important;
+        min-width: auto;
+    }
+    
+    .resize-handle {
+        display: none;
+    }
+    
+    .tool-carousel {
+        gap: 0.5rem;
+    }
+    
+    .tool-card {
+        min-width: 4rem;
+        padding: 0.5rem;
+    }
+}
+
+/* Context Menu Styles - Critical for Node Menu Functionality */
+.context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    min-width: 160px;
+    padding: 4px 0;
+    font-size: 14px;
+    display: none;
+}
+
+.context-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.context-item:hover {
+    background-color: #f3f4f6;
+}
+
+.context-item.danger:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.context-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 4px 0;
+}
+
+/* Node menu button styles */
+.node-menu-btn {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.node-menu-btn:hover {
+    opacity: 1;
+    color: #374151 !important;
+}
+
+/* Fixed node sizing during drag operations */
+.node.drag-over {
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
+}
+
+.node {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+}
+
+/* ================================================= */
+/* TEXTUAL FLOW MODE STYLES */
+/* Risk Level: ZERO - New CSS classes, no existing styles modified */
+/* ================================================= */
+
+/* Mode Toggle in Header */
+.mode-toggle {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mode-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    color: #64748b;
+}
+
+.mode-btn.active {
+    background: var(--color-primary);
+    color: white;
+}
+
+.mode-btn:hover:not(.active) {
+    background: #e2e8f0;
+}
+
+/* Canvas Mode Containers */
+.canvas-mode {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+
+.canvas-mode.active {
+    display: flex;
+}
+
+.canvas-mode.hidden {
+    display: none;
+}
+
+/* Textual Steps Container */
+.textual-steps {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    flex: 1;
+    margin-top: 1rem;
+}
+
+/* Step Headers - Table Style */
+.step-headers {
+    display: grid;
+    grid-template-columns: 60px 120px 1fr 1fr;
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #374151;
+}
+
+.header-cell {
+    padding: 12px 8px;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+}
+
+.header-cell:last-child {
+    border-right: none;
+}
+
+/* Step Rows - Table Style */
+.step-row {
+    display: grid;
+    grid-template-columns: 60px 120px 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    min-height: 48px;
+}
+
+.step-row:last-child {
+    border-bottom: none;
+}
+
+.step-row.final-deliverable {
+    background: #f0fdf4;
+    border-left: 4px solid var(--color-success);
+}
+
+/* Step Number - Color Coded by Tool Category */
+.step-number {
+    color: white;
+    margin: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Tool category colors matching ToolStyleManager.js */
+.step-number.convert-to-text {
+    background: var(--color-audio); /* Blue for audio2text, video2text, pdf2text, image2text */
+}
+
+.step-number.process-text {
+    background: var(--color-text); /* Green for analyzer, join */
+}
+
+.step-number.convert-from-text {
+    background: var(--color-secondary); /* Orange for text2pdf */
+}
+
+/* Step Tool Display */
+.step-tool {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    border-right: 1px solid #e2e8f0;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.tool-icon {
+    font-size: 1rem;
+}
+
+/* Step Files Display */
+.step-files {
+    padding: 8px 12px;
+    border-right: 1px solid #e2e8f0;
+}
+
+.step-outputs {
+    padding: 8px 12px;
+}
+
+/* File Tags */
+.file-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    margin: 1px 2px;
+    border: 1px solid #cbd5e1;
+}
+
+.file-tag.output {
+    background: #dbeafe;
+    color: #1e40af;
+    border-color: #93c5fd;
+}
+
+.file-tag.final {
+    background: #dcfce7;
+    color: #15803d;
+    border-color: #86efac;
+    font-weight: 600;
+}
+
+/* User Prompt Rows */
+.user-prompt-row {
+    grid-column: 1 / -1;
+    background: #fffbeb;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+}
+
+.user-prompt-row:last-child {
+    border-bottom: none;
+}
+
+.prompt-label {
+    font-weight: 600;
+    color: #92400e;
+    margin-right: 8px;
+}
+
+.prompt-text {
+    color: #78350f;
+    font-style: italic;
+}
+
+/* Empty State */
+.textual-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #64748b;
+}
+
+.textual-empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.textual-empty-state h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.textual-empty-state p {
+    font-size: 0.95rem;
+    max-width: 400px;
+}
+
+/* Textual Mode Responsive Design */
+@media (max-width: 768px) {
+    .step-headers,
+    .step-row {
+        grid-template-columns: 40px 100px 1fr 1fr;
+        font-size: 0.8rem;
+    }
+    
+    .header-cell,
+    .step-tool,
+    .step-files,
+    .step-outputs {
+        padding: 6px 4px;
+    }
+    
+    .mode-toggle {
+        scale: 0.9;
+    }
+    
+    .mode-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+}
