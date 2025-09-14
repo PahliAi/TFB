@@ -2,9 +2,9 @@ License
 PolyForm Noncommercial License 1.0.0 - This software is licensed for noncommercial use only.
 
 🔐 License Authority: Master License Record
-📅 Originally Established: August 14, 2025 (cryptographically verified)
+📅 License Updated: September 14, 2025 (changed from MIT to PolyForm Noncommercial)
 📄 Full License Text: See LICENSE file in this repository
-🏷️ Git Proof: Commit 8e4f5bd43eb with permanent verification
+🏷️ Git Proof: Commit 664af60 with permanent verification (DEV repository)
 
 Permitted Uses: Personal use, research, education, nonprofit organizations
 Restricted Uses: Commercial use, resale, commercial distribution
